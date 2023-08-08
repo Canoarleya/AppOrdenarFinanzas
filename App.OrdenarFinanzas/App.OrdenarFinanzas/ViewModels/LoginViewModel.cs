@@ -1,4 +1,5 @@
-﻿using App.OrdenarFinanzas.Views;
+﻿using App.OrdenarFinanzas.Resx;
+using App.OrdenarFinanzas.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -95,23 +96,36 @@ namespace App.OrdenarFinanzas.ViewModels
 
                 if(!ValidarUsuarioContrasena())
                 {
+                    await Application.Current.MainPage.DisplayAlert(
+                    AppResources.LoginPageInvalidLoginTitle,
+                    AppResources.LoginPageInvalidLoginMessage,
+                    AppResources.OkText);
+
+                    /*
                     MostrarMensaje = true;
                     ColorMensaje = Color.Red;
-                    MensajeBienvenida = "Usuario o Clave invalida";
+                    MensajeBienvenida = "Usuario o Clave invalida";*/
+
                 }
                 else
                 {
                     MostrarMensaje = false;
                     ColorMensaje = Color.Green;
                     MensajeBienvenida = "Bienvenido " + Username;
-                    await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+                    await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
                 }    
             }
             else
             {
+
+                await Application.Current.MainPage.DisplayAlert(
+AppResources.LoginPageInvalidTitleFaltanDatos,
+AppResources.LoginPageInvalidFaltanDatos,
+AppResources.OkText);
+                /*
                 MostrarMensaje = true;
                 ColorMensaje = Color.Red;
-                MensajeBienvenida = "Faltan datos necesarios para la autenticación";
+                MensajeBienvenida = "Faltan datos necesarios para la autenticación";*/
             }
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             

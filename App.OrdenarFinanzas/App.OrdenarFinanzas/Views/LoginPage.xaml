@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:App.OrdenarFinanzas.ViewModels"
+             xmlns:local="clr-namespace:App.OrdenarFinanzas;assembly=App.OrdenarFinanzas"
              mc:Ignorable="d"
              x:Class="App.OrdenarFinanzas.Views.LoginPage"
              Shell.NavBarIsVisible="False">
@@ -12,6 +13,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Image Source="{local:ImageResource App.OrdenarFinanzas.Recursos.Imagenes.LogoFinanzas.jpg}" WidthRequest="200" HeightRequest="200" />
             <Label Text="Iniciar Sesión" FontSize="Title" HorizontalOptions="Center" Margin="0, 30, 0, 10" />
             <Entry Text="{Binding Username}" Placeholder="Usuario" />
             <Entry Text="{Binding Password}" Placeholder="Contraseña" IsPassword="True" />

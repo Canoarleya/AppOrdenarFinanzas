@@ -1,4 +1,4 @@
-﻿using App.OrdenarFinanzas.Services;
+﻿//using App.OrdenarFinanzas.Services;
 using App.OrdenarFinanzas.Views;
 using System;
 using Xamarin.Forms;
@@ -12,8 +12,7 @@ namespace App.OrdenarFinanzas
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
+            Startup.Initialize();
             MainPage = new AppShell();
         }
 

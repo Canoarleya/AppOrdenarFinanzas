@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:App.OrdenarFinanzas.ViewModels"
+             xmlns:models="clr-namespace:App.OrdenarFinanzas.Data.Models"
+             xmlns:utility="clr-namespace:App.OrdenarFinanzas.Utilities"
+             xmlns:controls="clr-namespace:App.OrdenarFinanzas.Controls"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:DataType="viewModels:ClientsViewModel"
+             x:Class="App.OrdenarFinanzas.Views.ClientsPage">
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Resources>
+        <ResourceDictionary >
+            <DataTemplate x:DataType="models:Cliente"
+                x:Key="ClientDefaultTemplate">
+                <StackLayout>
+                    <Frame CornerRadius="7"
+                       BackgroundColor="AliceBlue">
+                        <Grid  Margin="0" Padding="0" ColumnDefinitions="20*,40*,30*,10*">
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start" Grid.Column="0" Text="{Binding NroDocCliente}"/>
+                            <Label  HorizontalTextAlignment="Start" Grid.Column="1">
+                                <Label.Text>
+                                    <MultiBinding StringFormat="{}{0} {1} {2}">
+                                        <Binding Path="NombresCliente"></Binding>
+                                        <Binding Path="Apellido1Cliente"></Binding>
+                                        <Binding Path="Apellido2Cliente"></Binding>
+                                    </MultiBinding>
+                                </Label.Text>
+                            </Label>
+                            <Label HorizontalTextAlignment="Center" Grid.Column="2" Text="{Binding EmailCliente}"/>
+                            <Label  HorizontalTextAlignment="End" Grid.Column="3" Text="{Binding TelContactoCliente}"/>
+                        </Grid>
+                    </Frame>
+                    <BoxView BackgroundColor="Transparent" HeightRequest="5" />
+                </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:DataType="models:Cliente"
+                x:Key="ClientOneToFiveTemplate">
+                <StackLayout>
+                    <Frame CornerRadius="7"
+                       BackgroundColor="LightCoral">
+                        <Grid  Margin="0" Padding="0" ColumnDefinitions="20*,40*,30*,10*">
+                            <Label  Margin="0" Padding="0" HorizontalTextAlignment="Start" Grid.Column="0" Text="{Binding NroDocCliente}"/>
+                            <Label  Margin="0" Padding="0" HorizontalTextAlignment="Start" Grid.Column="1">
+                                <Label.Text>
+                                    <MultiBinding StringFormat="{}{0} {1} {2}">
+                                        <Binding Path="NombresCliente"></Binding>
+                                        <Binding Path="Apellido1Cliente"></Binding>
+                                        <Binding Path="Apellido2Cliente"></Binding>
+                                    </MultiBinding>
+                                </Label.Text>
+                            </Label>
+                            <Label  Margin="0" Padding="0" HorizontalTextAlignment="Start" Grid.Column="2" Text="{Binding EmailCliente}"/>
+                            <Label  Margin="0" Padding="0" HorizontalTextAlignment="End" Grid.Column="3" Text="{Binding TelContactoCliente}"/>
+                        </Grid>
+                    </Frame>
+                    <BoxView BackgroundColor="Transparent" HeightRequest="5" />
+                </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:DataType="models:Cliente"
+                x:Key="ClientSixToTenTemplate">
+                <StackLayout>
+                    <Frame CornerRadius="7"
+                       BackgroundColor="LightGreen">
+                        <Grid  Margin="0" Padding="0" ColumnDefinitions="20*,40*,30*,10*">
+                            <Label  HorizontalTextAlignment="Center" Grid.Column="0" Text="{Binding NroDocCliente}"/>
+                            <Label  HorizontalTextAlignment="Start" Grid.Column="1">
+                                <Label.Text>
+                                    <MultiBinding StringFormat="{}{0} {1} {2}">
+                                        <Binding Path="NombresCliente"></Binding>
+                                        <Binding Path="Apellido1Cliente"></Binding>
+                                        <Binding Path="Apellido2Cliente"></Binding>
+                                    </MultiBinding>
+                                </Label.Text>
+                            </Label>
+                            <Label  HorizontalTextAlignment="Center" Grid.Column="2" Text="{Binding EmailCliente}"/>
+                            <Label  HorizontalTextAlignment="End" Grid.Column="3" Text="{Binding TelContactoCliente}"/>
+                        </Grid>
+                    </Frame>
+                    <BoxView BackgroundColor="Transparent" HeightRequest="5" />
+                </StackLayout>
+            </DataTemplate>
+
+            <controls:ClientTemplateSelector
+                x:Key="ClientTemplateSelector"
+                DefaultTemplate="{StaticResource ClientDefaultTemplate}"
+                OneToFiveTemplate="{StaticResource ClientOneToFiveTemplate}"
+                SixToTenTemplate="{StaticResource ClientSixToTenTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView ItemsSource="{Binding Clients}"
+                            EmptyView="No Clients to display"                            
+                            ItemTemplate="{StaticResource ClientTemplateSelector}">
+                <CollectionView.Header>
+                    <Grid  ColumnDefinitions="20*,40*,30*,10*">
+                        <Label HorizontalTextAlignment="Center" Grid.Column="0" Text="Documento" TextColor="Black"/>
+                        <Label HorizontalTextAlignment="Center" Grid.Column="1" Text="Nombre" TextColor="Black"/>
+                        <Label HorizontalTextAlignment="Center" Grid.Column="2" Text="Email" TextColor="Black"/>
+                        <Label HorizontalTextAlignment="Center" Grid.Column="3" Text="Tel" TextColor="Black"/>
+                    </Grid>
+                </CollectionView.Header>
+
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
