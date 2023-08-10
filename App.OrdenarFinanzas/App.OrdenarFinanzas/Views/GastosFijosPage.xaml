@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:App.OrdenarFinanzas.ViewModels"
+             xmlns:utility="clr-namespace:App.OrdenarFinanzas.Utilities"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             x:DataType="viewModels:GastosFijosViewModel"
+             xmlns:local="clr-namespace:App.OrdenarFinanzas;assembly=App.OrdenarFinanzas"
+             mc:Ignorable="d"
+             x:Class="App.OrdenarFinanzas.Views.GastosFijosPage">
+    <ContentPage.Content>
+        <StackLayout x:Name="StackLayout1" Padding="10">
+            <Label Text="Gastos Fijos"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   FontSize="28" FontFamily="Calibri" FontAttributes="Bold"
+                   TextColor="DodgerBlue"
+                   TextDecorations="Underline"
+                   Margin="0, 0, 0, 30"/>
+            <Grid  ColumnDefinitions="25*,75*" 
+                   RowDefinitions="15*,15*,125*,125*,100*" 
+                   RowSpacing ="0"
+                   ColumnSpacing="0">
+                <Label Text="Tipo Gasto"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="0"
+                   Grid.Row ="0"
+                       />
+                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="0">
+                    <Picker.Items>
+                        <x:String>Servicios Públicos</x:String>
+                        <x:String>Mercado</x:String>
+                        <x:String>Gastos no contemplados</x:String>
+                        <x:String>Impuesto Vehicular</x:String>
+                        <x:String>Impuesto Predial</x:String>
+                        <x:String>Combustibles</x:String>
+                        <x:String>Educación</x:String>
+                        <x:String>Soat</x:String>
+                        <x:String>Tecnicomecanica</x:String>
+                        <x:String>Mantenimiento Vehiculo</x:String>
+                        <x:String>Pagos Créditos</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Text="Descripción"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="0"
+                   Grid.Row ="1"/>
+
+                <Entry 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Fill"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="1"
+                   Grid.Row ="1"
+                   Placeholder="0"
+                   />
+                
+
+                <Label Text="Monto Estimado"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="0"
+                   Grid.Row ="2"/>
+
+                <Entry 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Fill"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="1"
+                   Grid.Row ="2"
+                   Placeholder="0"
+                   />
+
+
+                <Label Text="Periodicidad"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="0"
+                   Grid.Row ="3"/>
+
+                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="3">
+                    <Picker.Items>
+                        <x:String>Diaria</x:String>
+                        <x:String>Semanal</x:String>
+                        <x:String>Decadal</x:String>
+                        <x:String>Quincenal</x:String>
+                        <x:String>Mensual</x:String>
+                        <x:String>Bimestral</x:String>
+                        <x:String>Trimestral</x:String>
+                        <x:String>Semestral</x:String>
+                        <x:String>Anual</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Grid>
+            <Button VerticalOptions="Center" 
+                    Text="Guardar" Command="{Binding LoginCommand}"/>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

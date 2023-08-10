@@ -129,6 +129,12 @@
   <data name="LoginPageInvalidTitleFaltanDatos" xml:space="preserve">
     <value>Datos Obligatorios</value>
   </data>
+  <data name="LoginPagePasswordText" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="LoginPageUserNameText" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
   <data name="OkText" xml:space="preserve">
     <value>Ok</value>
   </data>

@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:App.OrdenarFinanzas.ViewModels"
+             xmlns:utility="clr-namespace:App.OrdenarFinanzas.Utilities"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             x:DataType="viewModels:MetasAhorrosViewModel"
+             xmlns:local="clr-namespace:App.OrdenarFinanzas;assembly=App.OrdenarFinanzas"
+             mc:Ignorable="d"
+             x:Class="App.OrdenarFinanzas.Views.MetasAhorrosPage">
+    <ContentPage.Content>
+        <StackLayout x:Name="StackLayout1" Padding="10">
+            <Label Text="Metas Ahorros"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   FontSize="28" FontFamily="Calibri" FontAttributes="Bold"
+                   TextColor="DodgerBlue"
+                   TextDecorations="Underline"
+                   Margin="0, 0, 0, 30"/>
+            <Grid  ColumnDefinitions="25*,75*" 
+                   RowDefinitions="12.5*,12.5*,12.5*,12.5*,12.5*,12.5*,12.5*,100*" 
+                   RowSpacing ="0"
+                   ColumnSpacing="0">
+                
+                <Label Text="Descripción"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="0"
+                   Grid.Row ="0"
+                       />
+                <Entry 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Fill"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="1"
+                   Grid.Row ="0"
+                   Placeholder="Descripcion"
+                   />
+
+                <Label Text="Monto Objetivo"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="0"
+                   Grid.Row ="1"
+                       />
+                <Entry 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Fill"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="1"
+                   Grid.Row ="1"
+                   Placeholder="0"
+                   />
+
+                <Label Text="Monto Inicial"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="0"
+                   Grid.Row ="2"
+                       />
+                <Entry 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Fill"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="1"
+                   Grid.Row ="2"
+                   Placeholder="0"
+                   />                
+
+                <Label Text="Fecha Inicial"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="0"
+                   Grid.Row ="3"
+                       />
+                <DatePicker x:Name="startDatePickerFi"
+                        Format="D"
+                        Margin="0, 0, 0, 0"
+                        MinimumDate="01/01/2018"
+                        MaximumDate="12/31/2099"
+                        Date="{x:Static sys:DateTime.Now}"
+                        HorizontalOptions="Fill"
+                        Grid.Column="1"
+                        Grid.Row ="3"/>
+
+                <Label Text="Monto Periodico"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="0"
+                   Grid.Row ="4"
+                       />
+                <Entry 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Fill"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="1"
+                   Grid.Row ="4"
+                   Placeholder="0"
+                   />
+
+                <Label Text="Periodicidad"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="0"
+                   Grid.Row ="5"/>
+
+                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="5">
+                    <Picker.Items>
+                        <x:String>Diaria</x:String>
+                        <x:String>Semanal</x:String>
+                        <x:String>Decadal</x:String>
+                        <x:String>Quincenal</x:String>
+                        <x:String>Mensual</x:String>
+                        <x:String>Bimestral</x:String>
+                        <x:String>Trimestral</x:String>
+                        <x:String>Semestral</x:String>
+                        <x:String>Anual</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Text="Fecha Proyectada"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="0"
+                   Grid.Row ="6"/>
+
+                <Label Text="dd/mm/yyyy"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="1"
+                   Grid.Row ="6"/>
+            </Grid>
+            <Button VerticalOptions="Center" 
+                    Text="Guardar" Command="{Binding LoginCommand}"/>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

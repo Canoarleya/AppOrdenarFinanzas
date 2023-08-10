@@ -1,27 +1,41 @@
 ﻿using App.OrdenarFinanzas.Resx;
+using App.OrdenarFinanzas.Services;
 using App.OrdenarFinanzas.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace App.OrdenarFinanzas.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        public Command LoginCommand { get; }
+
+        private readonly IAccountService _accountService;
+        public LoginViewModel(IAccountService accountService)
+        {
+            _accountService = accountService;
+            LoginCommand = new Command(OnLoginClicked);
+        }
+
         private string _username;
         private string _password;
-        private bool _MostrarMensaje;
-        private string _MensajeBienvenida;
-        private Color _colorMensaje;
+        //private bool _MostrarMensaje;
+        //private string _MensajeBienvenida;
+        //private Color _colorMensaje;
+        public string UserName { get => _username; set => SetProperty(ref _username, value); }
+        public string Password { get => _password; set => SetProperty(ref _password, value); }
 
+        public Command LoginCommand { get; }
+
+        //public Command LoginCommand { get; }
+
+
+
+        /*
         public LoginViewModel()
         {
             LoginCommand = new Command(OnLoginClicked);
         }
-
-
+        */
+        /*
         public Color ColorMensaje
         {
             get { return _colorMensaje; }
@@ -34,7 +48,8 @@ namespace App.OrdenarFinanzas.ViewModels
                 }
             }
         }
-
+        */
+        /*
         public string Username
         {
             get { return _username; }
@@ -46,8 +61,8 @@ namespace App.OrdenarFinanzas.ViewModels
                     OnPropertyChanged(nameof(Username));
                 }
             }
-        }
-
+        }*/
+        /*
         public string MensajeBienvenida
         {
             get { return _MensajeBienvenida; }
@@ -60,7 +75,8 @@ namespace App.OrdenarFinanzas.ViewModels
                 }
             }
         }
-
+        */
+        /*
         public bool MostrarMensaje
         {
             get { return _MostrarMensaje; }
@@ -73,67 +89,61 @@ namespace App.OrdenarFinanzas.ViewModels
                 }
             }
         }
-
-        public string Password
-        {
-            get { return _password; }
-            set
-            {
-                if (_password != value)
+        */
+        /*
+                public string Password
                 {
-                    _password = value;
-                    OnPropertyChanged(nameof(Password));
+                    get { return _password; }
+                    set
+                    {
+                        if (_password != value)
+                        {
+                            _password = value;
+                            OnPropertyChanged(nameof(Password));
+                        }
+                    }
                 }
-            }
-        }
 
-
+        */
         private async void OnLoginClicked(object obj)
         {
 
             if (ValidarCamposLogin())
             {
-
-                if(!ValidarUsuarioContrasena())
+                //if(!ValidarUsuarioContrasena())
+                if (await _accountService.LoginAsync(UserName, Password))
                 {
-                    await Application.Current.MainPage.DisplayAlert(
-                    AppResources.LoginPageInvalidLoginTitle,
-                    AppResources.LoginPageInvalidLoginMessage,
-                    AppResources.OkText);
-
-                    /*
-                    MostrarMensaje = true;
-                    ColorMensaje = Color.Red;
-                    MensajeBienvenida = "Usuario o Clave invalida";*/
-
+                    //MostrarMensaje = false;
+                    //ColorMensaje = Color.Green;
+                    //MensajeBienvenida = "Bienvenido " + UserName;
+                    await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
                 }
                 else
                 {
-                    MostrarMensaje = false;
-                    ColorMensaje = Color.Green;
-                    MensajeBienvenida = "Bienvenido " + Username;
-                    await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
-                }    
+                    await Application.Current.MainPage.DisplayAlert(
+                          AppResources.LoginPageInvalidLoginTitle,
+                          AppResources.LoginPageInvalidLoginMessage,
+                          AppResources.OkText);
+                }
             }
             else
             {
-
                 await Application.Current.MainPage.DisplayAlert(
-AppResources.LoginPageInvalidTitleFaltanDatos,
-AppResources.LoginPageInvalidFaltanDatos,
-AppResources.OkText);
+                        AppResources.LoginPageInvalidTitleFaltanDatos,
+                        AppResources.LoginPageInvalidFaltanDatos,
+                        AppResources.OkText);
                 /*
                 MostrarMensaje = true;
                 ColorMensaje = Color.Red;
                 MensajeBienvenida = "Faltan datos necesarios para la autenticación";*/
             }
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            
+
         }
 
         private bool ValidarCamposLogin()
-        { 
-            if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password)) 
+        {
+            if (!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password))
             {
                 return true;
             }
@@ -142,10 +152,10 @@ AppResources.OkText);
                 return false;
             }
         }
-
+        /*
         private bool ValidarUsuarioContrasena()
         {
-            if (Username == "usuario" && Password == "contrasena")
+            if (UserName == "usuario" && Password == "contrasena")
             {
                 return true;
             }
@@ -153,6 +163,6 @@ AppResources.OkText);
             {
                 return false;
             }
-        }
+        }*/
     }
 }

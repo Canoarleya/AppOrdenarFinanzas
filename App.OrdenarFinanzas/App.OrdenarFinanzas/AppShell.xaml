@@ -2,8 +2,10 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:App.OrdenarFinanzas.Views"
+       xmlns:bi="clr-namespace:Xamarin.Forms.Bootstrap.Icons;assembly=Xamarin.Forms.Bootstrap.Icons"
        Title="App.OrdenarFinanzas"
-       x:Class="App.OrdenarFinanzas.AppShell">
+       x:Class="App.OrdenarFinanzas.AppShell"
+       >
 
     <!--
         The overall app visual hierarchy is defined here, along with navigation.
@@ -83,12 +85,48 @@
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     </TabBar>
 
-    <FlyoutItem Title="Clients" Icon="icon_about.png">
+    <FlyoutItem Title="Clients">
+        <FlyoutItem.Icon>
+            <bi:IconSource Icon="PersonCircle" Size="24" Color="Black"/>
+        </FlyoutItem.Icon>
         <ShellContent Route="ClientsPage" ContentTemplate="{DataTemplate local:ClientsPage}" />
     </FlyoutItem>
 
+     <FlyoutItem Title="Registro Gastos">
+        <FlyoutItem.Icon>
+            <bi:IconSource Icon="Cart4" Size="24" Color="Black"/>
+        </FlyoutItem.Icon>
+        <ShellContent Route="GastosPage" ContentTemplate="{DataTemplate local:GastosPage}">
+        </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Gastos Fijos">
+        <FlyoutItem.Icon>
+            <bi:IconSource Icon="CreditCard" Size="24" Color="Black"/>
+        </FlyoutItem.Icon>
+        <ShellContent Route="GastosFijosPage" ContentTemplate="{DataTemplate local:GastosFijosPage}">
+        </ShellContent>
+    </FlyoutItem>
+    
+
+    <!--<FlyoutItem Title="Ingresos">
+        <FlyoutItem.Icon>
+            <bi:IconSource Icon="CurrencyDollar" Size="24" Color="Black"/>
+        </FlyoutItem.Icon>
+        <ShellContent Route="IngresosPage" ContentTemplate="{DataTemplate local:IngresosPage}">
+        </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Metas Ahorros">
+        <FlyoutItem.Icon>
+            <bi:IconSource Icon="PiggyBank" Size="24" Color="Black"/>
+        </FlyoutItem.Icon>
+        <ShellContent Route="MetasAhorrosPage" ContentTemplate="{DataTemplate local:MetasAhorrosPage}">
+        </ShellContent>
+    </FlyoutItem>-->
+
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
-    <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
+    <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked" IconImageSource="Exit.png">
     </MenuItem>
 
 

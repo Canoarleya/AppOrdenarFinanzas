@@ -97,6 +97,24 @@ namespace App.OrdenarFinanzas.Resx {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Contraseña.
+        /// </summary>
+        internal static string LoginPagePasswordText {
+            get {
+                return ResourceManager.GetString("LoginPagePasswordText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Usuario.
+        /// </summary>
+        internal static string LoginPageUserNameText {
+            get {
+                return ResourceManager.GetString("LoginPageUserNameText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Ok.
         /// </summary>
         internal static string OkText {

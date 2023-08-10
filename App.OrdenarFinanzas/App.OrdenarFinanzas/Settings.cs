@@ -6,6 +6,6 @@ namespace App.OrdenarFinanzas
 {
     public static class Settings
     {
-        public const string ApiBaseUri = "http://172.20.10.32:5000/api";
+        public const string ApiBaseUri = "http://172.20.7.37:5000/api";
     }
 }
