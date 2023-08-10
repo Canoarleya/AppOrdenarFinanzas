@@ -21,7 +21,7 @@
                    TextDecorations="Underline"
                    Margin="0, 0, 0, 30"/>
             <Grid  ColumnDefinitions="25*,75*" 
-                   RowDefinitions="15*,15*,125*,125*,100*" 
+                   RowDefinitions="15*,15*,15*,15*,100*" 
                    RowSpacing ="0"
                    ColumnSpacing="0">
                 <Label Text="Tipo Gasto"
@@ -113,6 +113,7 @@
                         <x:String>Anual</x:String>
                     </Picker.Items>
                 </Picker>
+                
             </Grid>
             <Button VerticalOptions="Center" 
                     Text="Guardar" Command="{Binding LoginCommand}"/>
