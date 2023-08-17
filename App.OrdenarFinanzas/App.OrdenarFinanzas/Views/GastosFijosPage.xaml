@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:App.OrdenarFinanzas.ViewModels"
+             xmlns:models="clr-namespace:App.OrdenarFinanzas.Data.Models"
              xmlns:utility="clr-namespace:App.OrdenarFinanzas.Utilities"
+             xmlns:controls="clr-namespace:App.OrdenarFinanzas.Controls"
              utility:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:DataType="viewModels:GastosFijosViewModel"
-             xmlns:local="clr-namespace:App.OrdenarFinanzas;assembly=App.OrdenarFinanzas"
-             mc:Ignorable="d"
              x:Class="App.OrdenarFinanzas.Views.GastosFijosPage">
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>   
     <ContentPage.Content>
         <StackLayout x:Name="StackLayout1" Padding="10">
             <Label Text="Gastos Fijos"
@@ -33,20 +34,10 @@
                    Grid.Column="0"
                    Grid.Row ="0"
                        />
-                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="0">
-                    <Picker.Items>
-                        <x:String>Servicios Públicos</x:String>
-                        <x:String>Mercado</x:String>
-                        <x:String>Gastos no contemplados</x:String>
-                        <x:String>Impuesto Vehicular</x:String>
-                        <x:String>Impuesto Predial</x:String>
-                        <x:String>Combustibles</x:String>
-                        <x:String>Educación</x:String>
-                        <x:String>Soat</x:String>
-                        <x:String>Tecnicomecanica</x:String>
-                        <x:String>Mantenimiento Vehiculo</x:String>
-                        <x:String>Pagos Créditos</x:String>
-                    </Picker.Items>
+                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="0"
+                    TitleColor="Red"
+                        ItemsSource="{Binding TiposGastostFijos}"
+                        ItemDisplayBinding="{Binding DescripcionTipoGastoFijo}">
                 </Picker>
 
                 <Label Text="Descripción"
@@ -100,18 +91,11 @@
                    Grid.Column="0"
                    Grid.Row ="3"/>
 
-                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="3">
-                    <Picker.Items>
-                        <x:String>Diaria</x:String>
-                        <x:String>Semanal</x:String>
-                        <x:String>Decadal</x:String>
-                        <x:String>Quincenal</x:String>
-                        <x:String>Mensual</x:String>
-                        <x:String>Bimestral</x:String>
-                        <x:String>Trimestral</x:String>
-                        <x:String>Semestral</x:String>
-                        <x:String>Anual</x:String>
-                    </Picker.Items>
+                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="3"
+                        TitleColor="Red"
+                        ItemsSource="{Binding Periodicidades}"
+                        ItemDisplayBinding="{Binding DescripcionPeriodicidad}"
+                        SelectedItem="{Binding IdPeriodicidadGastoFijo, Mode=TwoWay}">
                 </Picker>
                 
             </Grid>
