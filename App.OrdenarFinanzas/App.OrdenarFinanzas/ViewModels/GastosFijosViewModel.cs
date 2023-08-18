@@ -1,4 +1,5 @@
 ﻿using App.OrdenarFinanzas.Data.Models;
+using App.OrdenarFinanzas.Resx;
 using App.OrdenarFinanzas.Services;
 using System;
 using System.Threading.Tasks;
@@ -54,23 +55,48 @@ namespace App.OrdenarFinanzas.ViewModels
 
         private readonly IPeriodicidadService _periodicidadService;
         private readonly ITipoGastoFijoService _tipoGastoFijoService;
+        private readonly IGastoFijoService _gastoFijoService;
+
         private string _idPeriodicidad;
         private string _idTipoGasto;
         private string _monto;
         private string _descripcion;
 
         public string DescripcionGastoFijo { get => _descripcion; set => SetProperty(ref _descripcion, value); }
-        public string IdPeriodicidadGastoFijo { get => _idPeriodicidad; set => SetProperty(ref _idPeriodicidad, value); }
-        public string IdTipoGasto { get => _idTipoGasto; set => SetProperty(ref _idTipoGasto, value); }
         public string Monto { get => _monto; set => SetProperty(ref _monto, value); }
 
-        public GastosFijosViewModel(IPeriodicidadService periodicidadService, ITipoGastoFijoService tipoGastoFijoService)
+
+        private TipoGastoFijo _tipoGastoFijo;
+        public TipoGastoFijo TipoGastoFijo
+        {
+            get { return _tipoGastoFijo; }
+            set
+            {
+                _tipoGastoFijo = value;
+                OnPropertyChanged(nameof(_tipoGastoFijo));
+            }
+        }
+
+        private Periodicidad _periodicidad;
+        public Periodicidad PeriodicidadGastoFijo
+        { get { return _periodicidad; }
+            set
+            {
+                _periodicidad = value;
+                OnPropertyChanged(nameof(PeriodicidadGastoFijo));
+            }
+        }
+
+        public GastosFijosViewModel(IPeriodicidadService periodicidadService, 
+            ITipoGastoFijoService tipoGastoFijoService,
+            IGastoFijoService gastoFijoService)
         {
             AppearingCommand = new AsyncCommand(async () => await OnAppearingAsync());
             LoginCommand = new Command(OnLoginClicked);
             Title = "Periodicidades";
             _periodicidadService = periodicidadService;
             _tipoGastoFijoService = tipoGastoFijoService;
+            _gastoFijoService = gastoFijoService;
         }
 
         public ICommand AppearingCommand { get; set; }
@@ -120,10 +146,45 @@ namespace App.OrdenarFinanzas.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
-            await Application.Current.MainPage.DisplayAlert(
-                    "GastosFijosViewModel",
-                    "Carga Pantalla Gastos Fijos",
-                    IdPeriodicidadGastoFijo);
+            try
+            {
+                IsBusy = true;
+                GastoFijo gastoFijo = new GastoFijo();
+                gastoFijo.IdPeriodicidad = PeriodicidadGastoFijo.IdPeriodicidad;
+                gastoFijo.IdTipoGastoFijo = TipoGastoFijo.IdTipoGastoFijo;
+                gastoFijo.MontoEstimado = Convert.ToDecimal(Monto);
+                gastoFijo.DescripcionGastoFijo = DescripcionGastoFijo;
+
+                long periodicidades = await _gastoFijoService.PostCrearGastoFijoAsync(gastoFijo);
+                if (periodicidades == 0)
+                {
+                    await Application.Current.MainPage.DisplayAlert(
+                   "Crear Gastos Fijos",
+                   "Gasto Fijo Registrado con éxito",
+                   AppResources.OkText);
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert(
+                     "Crear Gastos Fijos",
+                     "Fallo el proceso de registro.",
+                     AppResources.OkText);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                 "Crear Gastos Fijos",
+                 ex.Message,
+                 AppResources.OkText);
+
+                var message = ex.Message;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
     }
 }

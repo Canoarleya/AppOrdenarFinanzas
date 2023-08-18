@@ -37,7 +37,8 @@
                 <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="0"
                     TitleColor="Red"
                         ItemsSource="{Binding TiposGastostFijos}"
-                        ItemDisplayBinding="{Binding DescripcionTipoGastoFijo}">
+                        ItemDisplayBinding="{Binding DescripcionTipoGastoFijo}"
+                        SelectedItem="{Binding TipoGastoFijo}">
                 </Picker>
 
                 <Label Text="Descripción"
@@ -57,7 +58,8 @@
                    TextColor="DodgerBlue"
                    Grid.Column="1"
                    Grid.Row ="1"
-                   Placeholder="0"
+                   Placeholder="Descripción del gasto"
+                   Text="{Binding DescripcionGastoFijo}"
                    />
                 
 
@@ -79,6 +81,7 @@
                    Grid.Column="1"
                    Grid.Row ="2"
                    Placeholder="0"
+                   Text="{Binding Monto}"
                    />
 
 
@@ -91,11 +94,14 @@
                    Grid.Column="0"
                    Grid.Row ="3"/>
 
-                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="3"
+                <Picker Title="Seleccione" Margin="0, 0, 0, 0" 
+                        HorizontalOptions="Fill" 
+                        Grid.Column="1" 
+                        Grid.Row ="3"
                         TitleColor="Red"
                         ItemsSource="{Binding Periodicidades}"
                         ItemDisplayBinding="{Binding DescripcionPeriodicidad}"
-                        SelectedItem="{Binding IdPeriodicidadGastoFijo, Mode=TwoWay}">
+                        SelectedItem="{Binding PeriodicidadGastoFijo}">
                 </Picker>
                 
             </Grid>
