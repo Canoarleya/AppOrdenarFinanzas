@@ -7,6 +7,5 @@ namespace App.OrdenarFinanzas.Services
     public interface IPeriodicidadService
     {
         Task<List<Periodicidad>> PostObtenerPeriodicidadesAsync();
-        //Task<Int64> PostCrearPeriodicidadAsync(Periodicidad periodicidad);
     }
 }

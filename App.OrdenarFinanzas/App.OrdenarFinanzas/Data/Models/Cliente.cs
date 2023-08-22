@@ -8,7 +8,6 @@ namespace App.OrdenarFinanzas.Data.Models
     {
             public long IdCliente { get; set; }
             public string NombresCliente { get; set; }
-         
             public string Apellido1Cliente { get; set; }
             public string Apellido2Cliente { get; set; }
             public string NroDocCliente { get; set; }

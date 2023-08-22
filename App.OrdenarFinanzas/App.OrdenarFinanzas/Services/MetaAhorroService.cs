@@ -54,8 +54,6 @@ namespace App.OrdenarFinanzas.Services
                         metasAhorro = ResultMetaAhorro.value.ToList();
                     }
                 }
-
-                //clients = response.ToList();
                 return metasAhorro;
             }
             catch (Exception ex)

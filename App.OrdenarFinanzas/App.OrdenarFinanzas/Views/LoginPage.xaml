@@ -12,9 +12,6 @@
              mc:Ignorable="d"
              x:Class="App.OrdenarFinanzas.Views.LoginPage"
              Shell.NavBarIsVisible="False">
-    <!--<ContentPage.BindingContext>
-        <viewModels:LoginViewModel/>
-    </ContentPage.BindingContext>-->
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
             <Image Source="{local:ImageResource App.OrdenarFinanzas.Recursos.Imagenes.LogoFinanzas.jpg}" WidthRequest="200" HeightRequest="200" />
@@ -22,8 +19,6 @@
             <Entry Text="{Binding UserName}" Placeholder="{Static resx:AppResources.LoginPageUserNameText}" />
             <Entry Text="{Binding Password}" Placeholder="{Static resx:AppResources.LoginPagePasswordText}" IsPassword="True" />
             <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-            <!--<Button Text="Iniciar Sesión" Clicked="OnLoginButtonClicked" HorizontalOptions="Center" Margin="20" />-->
-            <!--<Label Text="{Binding MensajeBienvenida}"  TextColor="Red"  IsVisible="{Binding MostrarMensaje}" HorizontalOptions="Center" />-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

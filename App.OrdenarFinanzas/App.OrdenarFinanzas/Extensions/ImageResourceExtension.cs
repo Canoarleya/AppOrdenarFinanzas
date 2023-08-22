@@ -18,8 +18,6 @@ namespace App.OrdenarFinanzas
             {
                 return null;
             }
-
-            // Do your translation lookup here, using whatever method you require
             var imageSource = ImageSource.FromResource(Source, typeof(ImageResourceExtension).GetTypeInfo().Assembly);
 
             return imageSource;

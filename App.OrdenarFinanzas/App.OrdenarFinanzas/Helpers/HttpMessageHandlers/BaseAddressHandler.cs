@@ -8,10 +8,6 @@ namespace App.OrdenarFinanzas.Helpers.HttpMessageHandlers
 {
     public class BaseAddressHandler : DelegatingHandler
     {
-        /*
-        public BaseAddressHandler()
-        {
-        }*/
         private readonly IAppUserSettingService _appUserSettingService;
         public BaseAddressHandler(IAppUserSettingService appUserSettingService)
         {

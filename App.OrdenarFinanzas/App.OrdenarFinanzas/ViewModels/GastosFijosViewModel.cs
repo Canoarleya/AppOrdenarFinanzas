@@ -98,12 +98,6 @@ namespace App.OrdenarFinanzas.ViewModels
             }
         }
 
-        ///*
-        //public GastosFijosViewModel()
-        //{
-        //    LoginCommand = new Command(OnLoginClicked);
-        //}*/
-
         private async void OnLoginClicked(object obj)
         {
             try

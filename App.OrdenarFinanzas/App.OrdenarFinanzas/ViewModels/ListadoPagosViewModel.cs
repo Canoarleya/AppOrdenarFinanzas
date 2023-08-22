@@ -1,9 +1,6 @@
-﻿using App.OrdenarFinanzas.Data.Models;
-using App.OrdenarFinanzas.Data.Models.Dto;
+﻿using App.OrdenarFinanzas.Data.Models.Dto;
 using App.OrdenarFinanzas.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.CommunityToolkit.ObjectModel;
@@ -19,8 +16,10 @@ namespace App.OrdenarFinanzas.ViewModels
             AppearingCommand = new AsyncCommand(async () => await OnAppearingAsync());
             Title = "Clientes";
             _pagoService = pagoService;
+
         }
         public ObservableRangeCollection<PagosDto> ListadoPagos { get; set; } = new ObservableRangeCollection<PagosDto>();
+
         public ICommand AppearingCommand { get; set; }
         private async Task OnAppearingAsync()
         {

@@ -28,8 +28,6 @@ namespace App.OrdenarFinanzas.ViewModels
         private bool _pickerGastoFijoEsVisible;
         public bool PickerGastoFijoEsVisible { get => _pickerGastoFijoEsVisible; set => SetProperty(ref _pickerGastoFijoEsVisible, value); }
         public ObservableRangeCollection<TipoPago> TiposPago { get; set; } = new ObservableRangeCollection<TipoPago>();
-        //public ObservableRangeCollection<TipoGastoFijo> TiposGastosFijos { get; set; } = new ObservableRangeCollection<TipoGastoFijo>();
-        //public ObservableRangeCollection<MetaAhorro> MetasAhorro { get; set; } = new ObservableRangeCollection<MetaAhorro>();
         public ObservableRangeCollection<Subtipos> ListSubtiposPago { get; set; } = new ObservableRangeCollection<Subtipos>();
         public ObservableRangeCollection<Subtipos> ListaSubtipoGastosFijos { get; set; } = new ObservableRangeCollection<Subtipos>();
         public string DescripcionPago { get => _descripcionPago; set => SetProperty(ref _descripcionPago, value); }

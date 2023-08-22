@@ -9,12 +9,8 @@ namespace App.OrdenarFinanzas.Data.Models
     public class TipoGastoFijo
     {
         public long IdTipoGastoFijo { get; set; }
-
         public string DescripcionTipoGastoFijo { get; set; }
-
         public long UserId { get; set; }
-
-        //public virtual User? User { get; set; }
 
     }
 

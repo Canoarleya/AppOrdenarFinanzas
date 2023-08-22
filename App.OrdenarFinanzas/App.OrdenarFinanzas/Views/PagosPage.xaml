@@ -59,23 +59,6 @@
                     SelectedItem="{Binding Subtipos}"
                     >
                 </Picker>                
-                
-                <!--<Label Text="Subtipo"
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Start"
-                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
-                   Margin="0, 0, 0, 0"
-                   TextColor="DodgerBlue"
-                   Grid.Column="0"
-                   Grid.Row ="2"
-                   />
-
-                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="2" 
-                    ItemsSource="{Binding ListSubtiposPago}"
-                    ItemDisplayBinding="{Binding DescripcionSubtipo}"
-                    SelectedItem="{Binding TipoGastoFijo}"
-                    >
-                </Picker>-->
 
                 <Label Text="Tipo Gasto"
                    VerticalOptions="Center" 
@@ -158,7 +141,5 @@
             <Button VerticalOptions="Center" 
                     Text="Guardar" Command="{Binding GuardarCommand}"/>           
             </StackLayout>
-
-
     </ContentPage.Content>
 </ContentPage>

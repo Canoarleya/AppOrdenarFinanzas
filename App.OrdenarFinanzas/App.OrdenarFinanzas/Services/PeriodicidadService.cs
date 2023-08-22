@@ -17,12 +17,6 @@ namespace App.OrdenarFinanzas.Services
         {
             _periodicidadApi = periodicidadApi;
         }
-        /*
-        public PeriodicidadService()
-        {
-            
-        }*/
-
         public async Task<List<Periodicidad>> PostObtenerPeriodicidadesAsync()
         {
             var periodicidades = new List<Periodicidad>();
@@ -42,7 +36,6 @@ namespace App.OrdenarFinanzas.Services
                     }
                 }
 
-                //clients = response.ToList();
                 return periodicidades;
             }
             catch (Exception ex)
@@ -51,22 +44,5 @@ namespace App.OrdenarFinanzas.Services
             }
             return periodicidades;
         }
-        /*
-        public async Task<Int64> PostCrearPeriodicidadAsync(Periodicidad periodicidad)
-        {
-            try
-            {
-                var response = await _periodicidadApi.CrearPeriodicidadAsync(periodicidad);
-                //clients = response.ToList();
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                var error = ex.Message;
-            }
-            return 1;
-
-        }*/
-
     }
 }

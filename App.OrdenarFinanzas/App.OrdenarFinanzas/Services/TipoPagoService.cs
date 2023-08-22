@@ -40,8 +40,6 @@ namespace App.OrdenarFinanzas.Services
                         tiposPago = ResultTipoPago.value.ToList();
                     }
                 }
-
-                //clients = response.ToList();
                 return tiposPago;
             }
             catch (Exception ex)

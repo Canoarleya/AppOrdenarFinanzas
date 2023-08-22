@@ -83,8 +83,6 @@ namespace App.OrdenarFinanzas.Services
                         gastosFijos = ResultGastosFijos.value.ToList();
                     }
                 }
-
-                //clients = response.ToList();
                 return gastosFijos;
             }
             catch (Exception ex)

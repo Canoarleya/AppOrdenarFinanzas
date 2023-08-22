@@ -1,35 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
              xmlns:local="clr-namespace:App.OrdenarFinanzas.Controls"
              xmlns:viewModels="clr-namespace:App.OrdenarFinanzas.ViewModels"
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:Util="clr-namespace:App.OrdenarFinanzas.Utilities"
+             Util:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:DataType="viewModels:ReportesViewModel"
+             xmlns:local1="clr-namespace:App.OrdenarFinanzas;assembly=App.OrdenarFinanzas"
+             mc:Ignorable="d"
              x:Class="App.OrdenarFinanzas.Views.ReportesPage">
     <ContentPage.Content>
         <StackLayout Background="#f6f6f6"
                      Margin="16">
-            <Label x:Name="lbl_principal" 
-                   Text="Reporte de Servicios" 
-                   FontSize="Medium"
-                   Margin="8"
-                   FontAttributes="Bold"
-                   />
-            <ScrollView>
-                <StackLayout>
-                    <microcharts:ChartView 
-                        x:Name="charViewBar" 
-                        HeightRequest="300"
-                        VerticalOptions="Start"
-                        HorizontalOptions="Fill"/>
-                    <microcharts:ChartView 
-                        x:Name="charViewPie" 
+            <Label Text="{Binding Title}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   FontSize="28" FontFamily="Calibri" FontAttributes="Bold"
+                   TextColor="DodgerBlue"
+                   TextDecorations="Underline"
+                   Margin="0, 0, 0, 0"/>
+            <Grid>
+                <microcharts:ChartView 
+                        Chart="{Binding BarChart}"	
+                        x:Name="charViewBar"
                         HeightRequest="300"/>
-                    <microcharts:ChartView 
-                        x:Name="charViewLine" 
-                        HeightRequest="300"/>
-                </StackLayout> 
-            </ScrollView>
+            </Grid>
+            <Button VerticalOptions="Center" Text="Login" Command="{Binding GenerarReporteCommand}"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -35,8 +35,6 @@ namespace App.OrdenarFinanzas.Services
                         tiposGastosFijos = ResulttiposGastosFijos.value.ToList();
                     }
                 }
-
-                //clients = response.ToList();
                 return tiposGastosFijos;
             }
             catch (Exception ex)

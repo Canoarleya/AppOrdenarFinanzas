@@ -9,6 +9,7 @@ namespace App.OrdenarFinanzas.Models
     {
         public string TipoGasto { get; set; }
         public float Valor { get; set; }
-        public Color Color { get; set; }
+        public string CodigoColorHex { get; set; }
+        public long idTipoGasto { get; set; }
     }
 }

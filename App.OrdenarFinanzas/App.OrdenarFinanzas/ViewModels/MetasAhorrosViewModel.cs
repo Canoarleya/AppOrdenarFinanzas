@@ -48,12 +48,6 @@ namespace App.OrdenarFinanzas.ViewModels
             _metaAhorroService = metaAhorroService;
         }
 
-        /*
-        public MetasAhorrosViewModel()
-        {
-            GuardarCommand = new Command(OnLoginClicked);
-        }*/
-
         private async Task OnAppearingAsync()
         {
             await LoadData();
