@@ -19,4 +19,6 @@ namespace App.OrdenarFinanzas.Data.Models
         public object result { get; set; }
         public List<GastoFijo> value { get; set; }
     }
+
+
 }

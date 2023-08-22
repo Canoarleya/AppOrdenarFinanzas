@@ -11,5 +11,8 @@ namespace App.OrdenarFinanzas.Data.API
         [Post("/Periodicidad/PostObtenerPeriodicidades")]
         Task<HttpResponseMessage> PostObtenerPeriodicidadesAsync();
 
+        [Post("/Periodicidad/PostCrearPeriodicidad")]
+        Task<HttpResponseMessage> PostCrearPeriodicidadAsync();
+
     }
 }

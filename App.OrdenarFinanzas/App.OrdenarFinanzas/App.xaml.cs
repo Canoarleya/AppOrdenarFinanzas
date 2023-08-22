@@ -1,6 +1,7 @@
 ﻿//using App.OrdenarFinanzas.Services;
 using App.OrdenarFinanzas.Views;
 using System;
+using System.Globalization;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,6 +13,9 @@ namespace App.OrdenarFinanzas
         public App()
         {
             InitializeComponent();
+            var culture = new CultureInfo("es-CO");
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
             Startup.Initialize();
             MainPage = new AppShell();
         }

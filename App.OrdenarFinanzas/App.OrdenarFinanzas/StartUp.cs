@@ -53,7 +53,20 @@ namespace App.OrdenarFinanzas
                 .ConfigureHttpClient(c => c.BaseAddress = new Uri(Settings.ApiBaseUri))
                 .AddHttpMessageHandler<BaseAddressHandler>();
 
+            serviceCollection.AddRefitClient<IMetaAhorroApi>(refitSettings)
+                .ConfigureHttpClient(c => c.BaseAddress = new Uri(Settings.ApiBaseUri))
+                .AddHttpMessageHandler<BaseAddressHandler>();
 
+
+            serviceCollection.AddRefitClient<ITipoPagoApi>(refitSettings)
+                .ConfigureHttpClient(c => c.BaseAddress = new Uri(Settings.ApiBaseUri))
+                .AddHttpMessageHandler<BaseAddressHandler>();
+
+            serviceCollection.AddRefitClient<IPagoApi>(refitSettings)
+                .ConfigureHttpClient(c => c.BaseAddress = new Uri(Settings.ApiBaseUri))
+                .AddHttpMessageHandler<BaseAddressHandler>();
+
+            
             containerBuilder.Populate(serviceCollection);
 
             containerBuilder.RegisterType<AppShell>();

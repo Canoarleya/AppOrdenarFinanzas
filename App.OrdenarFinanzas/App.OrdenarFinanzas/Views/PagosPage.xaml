@@ -7,10 +7,14 @@
              xmlns:viewModels="clr-namespace:App.OrdenarFinanzas.ViewModels"
              xmlns:utility="clr-namespace:App.OrdenarFinanzas.Utilities"
              utility:ViewModelLocator.AutoWireViewModel="True"
-             x:DataType="viewModels:GastosViewModel"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"             
+             x:DataType="viewModels:PagosViewModel"
              xmlns:local="clr-namespace:App.OrdenarFinanzas;assembly=App.OrdenarFinanzas"
              mc:Ignorable="d"
-             x:Class="App.OrdenarFinanzas.Views.GastosPage">
+             x:Class="App.OrdenarFinanzas.Views.PagosPage">
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>    
     <ContentPage.Content>
             <StackLayout x:Name="StackLayout1" Padding="10">
             <Label Text="Registro de gastos"
@@ -21,10 +25,10 @@
                    TextDecorations="Underline"
                    Margin="0, 0, 0, 30"/>
             <Grid  ColumnDefinitions="25*,75*" 
-                   RowDefinitions="12.5*,12.5*,12.5*,12.5*,50*,100*" 
+                   RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" 
                    RowSpacing ="0"
                    ColumnSpacing="0">
-                <Label Text="Tipo Gasto"
+                <Label Text="Tipo Pago"
                    VerticalOptions="Center" 
                    HorizontalOptions="Start"
                    FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
@@ -33,12 +37,61 @@
                    Grid.Column="0"
                    Grid.Row ="0"
                        />
-                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="0">
-                    <Picker.Items>
-                        <x:String>Gastos Fijos</x:String>
-                        <x:String>Metas</x:String>
-                        <x:String>Gastos no contemplados</x:String>
-                    </Picker.Items>
+                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="0"                    TitleColor="Red"
+                    ItemsSource="{Binding TiposPago}"
+                    ItemDisplayBinding="{Binding DescripcionTipoPago}"
+                    SelectedItem="{Binding TipoPago}">
+                </Picker>
+
+                <Label Text="Subtipo"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="0"
+                   Grid.Row ="1"
+                   />
+
+                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="1" 
+                    ItemsSource="{Binding ListSubtiposPago}"
+                    ItemDisplayBinding="{Binding DescripcionSubtipo}"
+                    SelectedItem="{Binding Subtipos}"
+                    >
+                </Picker>                
+                
+                <!--<Label Text="Subtipo"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="0"
+                   Grid.Row ="2"
+                   />
+
+                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="2" 
+                    ItemsSource="{Binding ListSubtiposPago}"
+                    ItemDisplayBinding="{Binding DescripcionSubtipo}"
+                    SelectedItem="{Binding TipoGastoFijo}"
+                    >
+                </Picker>-->
+
+                <Label Text="Tipo Gasto"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
+                   Margin="0, 0, 0, 0"
+                   TextColor="DodgerBlue"
+                   Grid.Column="0"
+                   Grid.Row ="2"
+                   />
+
+                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="2" 
+                    ItemsSource="{Binding ListaSubtipoGastosFijos}"
+                    ItemDisplayBinding="{Binding DescripcionSubtipo}"
+                    SelectedItem="{Binding GastoFijo}"
+                    >
                 </Picker>
 
                 <Label Text="Fecha"
@@ -48,17 +101,17 @@
                    Margin="0, 0, 0, 0"
                    TextColor="DodgerBlue"
                    Grid.Column="0"
-                   Grid.Row ="1"
+                   Grid.Row ="3"
                        />
                 <DatePicker x:Name="startDatePicker"
-                        Format="D"
+                        Format="yyyy/MM/dd"
                         Margin="0, 0, 0, 0"
                         MinimumDate="01/01/2018"
                         MaximumDate="12/31/2099"
-                        Date="{x:Static sys:DateTime.Now}"
+                        Date="{Binding FechaPago}"
                         HorizontalOptions="Fill"
                         Grid.Column="1"
-                        Grid.Row ="1"/>
+                        Grid.Row ="3"/>
 
                 <Label Text="Monto"
                    VerticalOptions="Center" 
@@ -67,7 +120,7 @@
                    Margin="0, 0, 0, 0"
                    TextColor="DodgerBlue"
                    Grid.Column="0"
-                   Grid.Row ="2"/>
+                   Grid.Row ="4"/>
                 
                 <Entry 
                    VerticalOptions="Center" 
@@ -76,36 +129,11 @@
                    Margin="0, 0, 0, 0"
                    TextColor="DodgerBlue"
                    Grid.Column="1"
-                   Grid.Row ="2"
+                   Grid.Row ="4"
                    Placeholder="0"
+                    Text="{Binding Monto}"
                    />
-                
-                
-                <Label Text="Subtipo"
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Start"
-                   FontSize="14" FontFamily="Calibri" FontAttributes="Bold"
-                   Margin="0, 0, 0, 0"
-                   TextColor="DodgerBlue"
-                   Grid.Column="0"
-                   Grid.Row ="3"/>
-
-                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="3">
-                    <Picker.Items>
-                        <x:String>Servicios Públicos</x:String>
-                        <x:String>Mercado</x:String>
-                        <x:String>Gastos no contemplados</x:String>
-                        <x:String>Impuesto Vehicular</x:String>
-                        <x:String>Impuesto Predial</x:String>
-                        <x:String>Combustibles</x:String>
-                        <x:String>Educación</x:String>
-                        <x:String>Soat</x:String>
-                        <x:String>Tecnicomecanica</x:String>
-                        <x:String>Mantenimiento Vehiculo</x:String>
-                        <x:String>Pagos Créditos</x:String>
-                    </Picker.Items>
-                </Picker>
-                
+               
                 <Label Text="Descripción"
                    VerticalOptions="Center" 
                    HorizontalOptions="Start"
@@ -113,7 +141,7 @@
                    Margin="0, 0, 0, 0"
                    TextColor="DodgerBlue"
                    Grid.Column="0"
-                   Grid.Row ="4"/>
+                   Grid.Row ="5"/>
                 
                 <Editor
                    VerticalOptions="Fill" 
@@ -122,12 +150,13 @@
                    Margin="0, 0, 0, 0"
                    TextColor="Black"
                    Grid.Column="1"
-                   Grid.Row ="4"
+                   Grid.Row ="5"
                    MaxLength="255"
-                   Placeholder="Ingrese la Descripción del pago"/>
+                   Placeholder="Ingrese la Descripción del pago"
+                    Text="{Binding DescripcionPago}"/>
             </Grid>
             <Button VerticalOptions="Center" 
-                    Text="Guardar" Command="{Binding LoginCommand}"/>           
+                    Text="Guardar" Command="{Binding GuardarCommand}"/>           
             </StackLayout>
 
 

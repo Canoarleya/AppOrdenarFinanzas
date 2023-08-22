@@ -36,9 +36,9 @@
                        />
                 <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="0"
                     TitleColor="Red"
-                        ItemsSource="{Binding TiposGastostFijos}"
-                        ItemDisplayBinding="{Binding DescripcionTipoGastoFijo}"
-                        SelectedItem="{Binding TipoGastoFijo}">
+                    ItemsSource="{Binding TiposGastostFijos}"
+                    ItemDisplayBinding="{Binding DescripcionTipoGastoFijo}"
+                    SelectedItem="{Binding TipoGastoFijo}">
                 </Picker>
 
                 <Label Text="Descripción"

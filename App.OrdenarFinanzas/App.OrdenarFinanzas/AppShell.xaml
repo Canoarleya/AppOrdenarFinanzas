@@ -85,19 +85,19 @@
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     </TabBar>
 
-    <FlyoutItem Title="Clients">
-        <FlyoutItem.Icon>
-            <bi:IconSource Icon="PersonCircle" Size="24" Color="Black"/>
-        </FlyoutItem.Icon>
-        <ShellContent Route="ClientsPage" ContentTemplate="{DataTemplate local:ClientsPage}" />
-    </FlyoutItem>
-
      <FlyoutItem Title="Registro Gastos">
         <FlyoutItem.Icon>
             <bi:IconSource Icon="Cart4" Size="24" Color="Black"/>
         </FlyoutItem.Icon>
-        <ShellContent Route="GastosPage" ContentTemplate="{DataTemplate local:GastosPage}">
+        <ShellContent Route="PagosPage" ContentTemplate="{DataTemplate local:PagosPage}">
         </ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Historico de Pagos">
+        <FlyoutItem.Icon>
+            <bi:IconSource Icon="Wallet2" Size="24" Color="Black"/>
+        </FlyoutItem.Icon>
+        <ShellContent Route="ListadoPagosPage" ContentTemplate="{DataTemplate local:ListadoPagosPage}" />
     </FlyoutItem>
 
     <FlyoutItem Title="Gastos Fijos">
@@ -107,6 +107,7 @@
         <ShellContent Route="GastosFijosPage" ContentTemplate="{DataTemplate local:GastosFijosPage}">
         </ShellContent>
     </FlyoutItem>
+
     <FlyoutItem Title="Ingresos">
         <FlyoutItem.Icon>
             <bi:IconSource Icon="CurrencyDollar" Size="24" Color="Black"/>
@@ -122,6 +123,15 @@
         <ShellContent Route="MetasAhorrosPage" ContentTemplate="{DataTemplate local:MetasAhorrosPage}">
         </ShellContent>
     </FlyoutItem>
+
+    <FlyoutItem Title="Estadisticas de Gastos">
+        <FlyoutItem.Icon>
+            <bi:IconSource Icon="GraphUpArrow" Size="24" Color="Black"/>
+        </FlyoutItem.Icon>
+        <ShellContent Route="ReportesPage" ContentTemplate="{DataTemplate local:ReportesPage}">
+        </ShellContent>
+    </FlyoutItem>
+
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
     <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked" IconImageSource="Exit.png">

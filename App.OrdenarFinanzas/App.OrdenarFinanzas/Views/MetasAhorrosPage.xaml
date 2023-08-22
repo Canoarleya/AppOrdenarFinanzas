@@ -7,10 +7,14 @@
              xmlns:viewModels="clr-namespace:App.OrdenarFinanzas.ViewModels"
              xmlns:utility="clr-namespace:App.OrdenarFinanzas.Utilities"
              utility:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:DataType="viewModels:MetasAhorrosViewModel"
              xmlns:local="clr-namespace:App.OrdenarFinanzas;assembly=App.OrdenarFinanzas"
              mc:Ignorable="d"
              x:Class="App.OrdenarFinanzas.Views.MetasAhorrosPage">
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>
     <ContentPage.Content>
         <StackLayout x:Name="StackLayout1" Padding="10">
             <Label Text="Metas Ahorros"
@@ -43,6 +47,7 @@
                    Grid.Column="1"
                    Grid.Row ="0"
                    Placeholder="Descripcion"
+                   Text="{Binding DescripcionMetaAhorro}"
                    />
 
                 <Label Text="Monto Objetivo"
@@ -63,6 +68,7 @@
                    Grid.Column="1"
                    Grid.Row ="1"
                    Placeholder="0"
+                   Text="{Binding MontoMetaAhorro}"
                    />
 
                 <Label Text="Monto Inicial"
@@ -83,6 +89,7 @@
                    Grid.Column="1"
                    Grid.Row ="2"
                    Placeholder="0"
+                   Text="{Binding MontoInicialMetaAhorro}"
                    />                
 
                 <Label Text="Fecha Inicial"
@@ -122,6 +129,7 @@
                    Grid.Column="1"
                    Grid.Row ="4"
                    Placeholder="0"
+                   Text="{Binding MontoPeriodicoMetaAhorro}"
                    />
 
                 <Label Text="Periodicidad"
@@ -133,18 +141,10 @@
                    Grid.Column="0"
                    Grid.Row ="5"/>
 
-                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="5">
-                    <Picker.Items>
-                        <x:String>Diaria</x:String>
-                        <x:String>Semanal</x:String>
-                        <x:String>Decadal</x:String>
-                        <x:String>Quincenal</x:String>
-                        <x:String>Mensual</x:String>
-                        <x:String>Bimestral</x:String>
-                        <x:String>Trimestral</x:String>
-                        <x:String>Semestral</x:String>
-                        <x:String>Anual</x:String>
-                    </Picker.Items>
+                <Picker Title="Seleccione" Margin="0, 0, 0, 0" HorizontalOptions="Fill" Grid.Column="1" Grid.Row ="5" TitleColor="Red"
+                        ItemsSource="{Binding Periodicidades}"
+                        ItemDisplayBinding="{Binding DescripcionPeriodicidad}"
+                        SelectedItem="{Binding PeriodicidadGastoFijo}">
                 </Picker>
 
                 <Label Text="Fecha Proyectada"
@@ -166,7 +166,7 @@
                    Grid.Row ="6"/>
             </Grid>
             <Button VerticalOptions="Center" 
-                    Text="Guardar" Command="{Binding LoginCommand}"/>
+                    Text="Guardar" Command="{Binding GuardarCommand}"/>
         </StackLayout>
 
 

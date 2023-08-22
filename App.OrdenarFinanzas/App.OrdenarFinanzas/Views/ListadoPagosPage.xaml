@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:App.OrdenarFinanzas.ViewModels"
+             xmlns:models="clr-namespace:App.OrdenarFinanzas.Data.Models"
+             xmlns:utility="clr-namespace:App.OrdenarFinanzas.Utilities"
+             xmlns:controls="clr-namespace:App.OrdenarFinanzas.Controls"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:DataType="viewModels:ListadoPagosViewModel"             
+             x:Class="App.OrdenarFinanzas.Views.ListadoPagosPage">
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Resources>
+        <ResourceDictionary >
+            <DataTemplate x:DataType="models:Dto.PagosDto"
+                x:Key="ClientDefaultTemplate">
+                    <StackLayout>
+                        <Frame CornerRadius="7" BackgroundColor="IndianRed">
+                        <Grid  Margin="0" Padding="0" ColumnDefinitions="30*,70*" RowDefinitions="*,*,*,*,*">
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Grid.Row="0" Text="{Binding DescritipoPago}"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="0" FontAttributes="Bold" Text="Tipo Pago:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="1" FontAttributes="Bold" Text="Subtipo:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Grid.Row="1" Text="{Binding DescriSubtipo}"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="2" FontAttributes="Bold" Text="Descripción:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Grid.Row="2" Text="{Binding DescripcionPago}"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="3" FontAttributes="Bold" Text="Fecha:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Grid.Row="3" Text="{Binding Fecha}"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="4" FontAttributes="Bold" Text="Monto:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Grid.Row="4" Text="{Binding Monto}"/>
+                        </Grid>
+                        </Frame>
+                        <BoxView BackgroundColor="Transparent" HeightRequest="5" />
+                    </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:DataType="models:Dto.PagosDto"
+                x:Key="GastosFijos">
+                    <StackLayout>
+                        <Frame CornerRadius="7" BackgroundColor="AliceBlue">
+                            <Grid  Margin="0" Padding="0" ColumnDefinitions="30*,70*" RowDefinitions="*,*,*,*,*">
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Text="{Binding DescritipoPago}"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="0" FontAttributes="Bold" Text="Tipo Pago:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="1" FontAttributes="Bold" Text="Subtipo:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Grid.Row="1" Text="{Binding DescriSubtipo}"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="2" FontAttributes="Bold" Text="Descripción:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Grid.Row="2" Text="{Binding DescripcionPago}"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="3" FontAttributes="Bold" Text="Fecha:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Grid.Row="3" Text="{Binding Fecha}"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="4" FontAttributes="Bold" Text="Monto:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Grid.Row="4" Text="{Binding Monto}"/>
+                            </Grid>
+                        </Frame>
+                        <BoxView BackgroundColor="Transparent" HeightRequest="5" />
+                    </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:DataType="models:Dto.PagosDto"
+                x:Key="GastosAhorros">
+                    <StackLayout>
+                        <Frame CornerRadius="7" BackgroundColor="LightGreen">
+                        <Grid  Margin="0" Padding="0" ColumnDefinitions="30*,70*" RowDefinitions="*,*,*,*,*">
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Text="{Binding DescritipoPago}"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="0" FontAttributes="Bold" Text="Tipo Pago:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="1" FontAttributes="Bold" Text="Subtipo:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Grid.Row="1" Text="{Binding DescriSubtipo}"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="2" FontAttributes="Bold" Text="Descripción:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Grid.Row="2" Text="{Binding DescripcionPago}"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="3" FontAttributes="Bold" Text="Fecha:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Grid.Row="3" Text="{Binding Fecha}"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="0" Grid.Row="4" FontAttributes="Bold" Text="Monto:"/>
+                            <Label Margin="0" Padding="0" HorizontalTextAlignment="Start"  Grid.Column="1" Grid.Row="4" Text="{Binding Monto}"/>
+                         </Grid>
+                        </Frame>
+                        <BoxView BackgroundColor="Transparent" HeightRequest="5" />
+                    </StackLayout>
+            </DataTemplate>
+            <controls:ListaoPagosTemplateSelector
+                x:Key="ListaoPagosTemplateSelector"
+                DefaultTemplate="{StaticResource ClientDefaultTemplate}"
+                GastosAhorros="{StaticResource GastosAhorros}"
+                GastosFijos="{StaticResource GastosFijos}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Historico de Pagos"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   FontSize="28" FontFamily="Calibri" FontAttributes="Bold"
+                   TextColor="DodgerBlue"
+                   TextDecorations="Underline"
+                   Margin="0, 0, 0, 0"/>
+            <CollectionView ItemsSource="{Binding ListadoPagos}"
+                            EmptyView="No Clients to display"                            
+                            ItemTemplate="{StaticResource ListaoPagosTemplateSelector}">
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

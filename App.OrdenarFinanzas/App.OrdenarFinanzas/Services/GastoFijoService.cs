@@ -1,5 +1,6 @@
 ﻿using App.OrdenarFinanzas.Data.API;
 using App.OrdenarFinanzas.Data.Models;
+using App.OrdenarFinanzas.Data.Models.Dto;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,33 @@ namespace App.OrdenarFinanzas.Services
                         gastosFijos = ResultGastosFijos.value.ToList();
                     }
                 }
+                return gastosFijos;
+            }
+            catch (Exception ex)
+            {
+                var error = ex.Message;
+            }
+            return gastosFijos;
+        }
+
+        public async Task<List<GastoFijoDto>> PostConsultarGastosFijosPorTipoAsync(long idTipoGastoFijo)
+        {
+            var gastosFijos = new List<GastoFijoDto>();
+            var ResultGastosFijos = new ResultGastosFijosDto();
+            try
+            {
+                var response = await _gastoFijoApi.PostConsultarGastosFijosPorTipoAsync(idTipoGastoFijo);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+
+                    ResultGastosFijos = JsonConvert.DeserializeObject<ResultGastosFijosDto>(content);
+                    if (ResultGastosFijos.value != null)
+                    {
+                        gastosFijos = ResultGastosFijos.value.ToList();
+                    }
+                }
 
                 //clients = response.ToList();
                 return gastosFijos;
@@ -65,9 +93,5 @@ namespace App.OrdenarFinanzas.Services
             }
             return gastosFijos;
         }
-
-
-        
-
     }
 }

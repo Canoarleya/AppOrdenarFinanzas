@@ -11,5 +11,8 @@ namespace App.OrdenarFinanzas.Data.API
     {
         [Post("/TipoGasto/PostObtenerTipoGastos")]
         Task<HttpResponseMessage> PostObtenerTipoGastosAsync();
+
+        [Post("/TipoGasto/PostCrearTipoGasto")]
+        Task<HttpResponseMessage> PostCrearTipoGastoAsync();
     }
 }

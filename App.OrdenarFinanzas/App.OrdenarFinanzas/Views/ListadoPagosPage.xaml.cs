@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace App.OrdenarFinanzas.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GastosPage : ContentPage
+    public partial class ListadoPagosPage : ContentPage
     {
-        public GastosPage()
+        public ListadoPagosPage()
         {
             InitializeComponent();
         }

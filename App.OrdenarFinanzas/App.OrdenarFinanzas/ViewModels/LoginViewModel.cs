@@ -116,7 +116,9 @@ namespace App.OrdenarFinanzas.ViewModels
                     //MostrarMensaje = false;
                     //ColorMensaje = Color.Green;
                     //MensajeBienvenida = "Bienvenido " + UserName;
-                    await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
+                    await Shell.Current.GoToAsync($"//{nameof(ListadoPagosPage)}");
+                    //await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
+                    
                 }
                 else
                 {

@@ -16,5 +16,9 @@ namespace App.OrdenarFinanzas.Data.API
 
         [Post("/GastoFijo/PostObtenerGastosFijos")]
         Task<HttpResponseMessage> PostObtenerGastosFijosAsync();
+
+
+        [Post("/GastoFijo/PostConsultarGastosFijosPorTipo")]
+        Task<HttpResponseMessage> PostConsultarGastosFijosPorTipoAsync(long idTipoGastoFijo);
     }
 }
